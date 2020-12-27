@@ -1,4 +1,3 @@
-import { RenderQuestion } from "../RenderQuestion";
 
 export type Question=
 {
@@ -8,21 +7,18 @@ export type Question=
     incorrect_answers:string[],
     question:string,
 }
-export type QuestinState=Question & {answer: string[]}
+var data: any
+data=[]
+export type QuestinState=Question & {answers: string[]}
 export const FetchingData= async()=>
 
 {
-    let data = await(await fetch(`https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple`)).json();
+    data = await(await fetch(`https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple`)).json();
     console.log(data);
-    return data.result.map((question:Question)=>({
+    return data.results.map((question:Question)=>({
         ...question,
+        answers: arrayShuffle([...question.incorrect_answers,question.correct_answer])        
     })
    )
-    
-
 }
-const arrayShuffle=()=>
-{
-
-}
-
+const arrayShuffle=(array:any[])=> [...array].sort(()=>Math.random()-0.5)
