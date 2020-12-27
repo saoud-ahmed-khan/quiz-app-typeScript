@@ -5,7 +5,7 @@ interface prop
    question:string;
    answers: string[];
    callback: any;
-   userAnswer: string;
+   userAnswer: any;
    questionNum: number;
    totalQues:number;
 
@@ -14,14 +14,20 @@ interface prop
 
 
 export const RenderQuestion:React.FC <prop>= ({
-    question,answer,callback,userAnswer,questionNum,totalQues
+    question,answers,callback,userAnswer,questionNum,totalQues
 })=>
-(
+(  
     <div>
         <p>Question:{questionNum}/{totalQues}</p>
         <p dangerouslySetInnerHTML={{__html: question}} />
         <div>
-            {answers.map(answer)}
+            {answers.map(ans=>(
+                <div>
+                    <button disabled={userAnswer} onClick={callback}>
+                       {ans} 
+                    </button>
+                </div>
+            ))}
         </div>
     </div>
 )
