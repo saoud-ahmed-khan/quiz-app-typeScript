@@ -1,11 +1,12 @@
 import React from 'react'
+import {objAnswer} from "../App";
 
 interface prop
 {
    question:string;
    answers: string[];
-   callback: any;
-   userAnswer: any;
+   callback: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+   userAnswer: objAnswer | undefined;
    questionNum: number;
    totalQues:number;
 
@@ -22,8 +23,8 @@ export const RenderQuestion:React.FC <prop>= ({
         <p dangerouslySetInnerHTML={{__html: question}} />
         <div>
             {answers.map(ans=>(
-                <div>
-                    <button disabled={userAnswer} onClick={callback}>
+                <div key={ans}>
+                    <button disabled={!!userAnswer} value={ans} onClick={callback}>
                        {ans} 
                     </button>
                 </div>

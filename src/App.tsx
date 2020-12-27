@@ -1,8 +1,14 @@
-import { queryHelpers } from "@testing-library/react";
 import React, { useState } from "react";
 import "./App.css";
 import { FetchingData, Difficulty, QuestionState } from "./components/api/Api";
 import { RenderQuestion } from "./components/RenderQuestion";
+export type objAnswer =
+{
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+}
 function App() {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
@@ -11,42 +17,63 @@ function App() {
   const [gameOver, setGameOver] = useState(true);
   const [score, setScore] = useState(0);
 
-  const num: number = 0;
   const total: number = 10;
-  type objAnswer = 
-  {
-    question:string;
-    answer:string;
-    correct:boolean;
-    correctAnswer: string;
-  }
+ 
 
-  const fetchData = async () =>
-   {
-      setLoading(true);
-      setGameOver(false)
-      const newQues= await FetchingData(total, Difficulty.EASY)
-      setQuestions(newQues)
-      setScore(0)
-      setUserAnswer([])
-      setNumber(0)
-      setLoading(false)
-   };
-   console.log(questions)
-   
+  const fetchData = async () => {
+    setLoading(true);
+    setGameOver(false)
+    const newQues = await FetchingData(total, Difficulty.EASY)
+    setQuestions(newQues)
+    setScore(0)
+    setUserAnswer([])
+    setNumber(0)
+    setLoading(false)
+  };
+
   const answerChecking = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => { };
-  const Next = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { };
+  ) =>
+   {
+      if(!gameOver)
+      {
+        const answer=event.currentTarget.value;
+        const correct= questions[number].correct_answer === answer;
+        if(correct){setScore(prev=>prev+1)}
+        const ansobj=
+        {
+          question: questions[number].question,
+          answer,
+          correct,
+          correctAnswer:questions[number].correct_answer,
+
+
+        }
+        setUserAnswer((prev)=>[...prev, ansobj])
+      }
+   };
+  const Next = () => {
+    const nextQuestion=number+1;
+    if(nextQuestion===total)
+    {
+      setGameOver(true)
+    }
+    else
+    {
+      setNumber(nextQuestion)
+    }
+  }
+   console.log(number)
+   
   return (
     <div className="App">
       <h1>Quiz App</h1>
-      {gameOver || UserAnswer.length===total ?(
-      <button onClick={fetchData}> start </button>):null}
-      {!gameOver?<p>score</p>:null}
-      {loading&&<p>loading questions</p>}
-      {!loading && !gameOver ?( <RenderQuestion questionNum={num+1 } totalQues={total} question={questions[num].question} answers={questions[num].answers} userAnswer={UserAnswer ? UserAnswer[num]:undefined} callback={answerChecking}/>):null} 
-      {!gameOver && !loading && UserAnswer.length===num+ <button onClick={Next}>Next Question</button>
+      {gameOver || UserAnswer.length === total ? (
+        <button onClick={fetchData}> start </button>) : null}
+      { <p>Your score is: {score}</p>}
+      {loading && <p>loading questions</p>}
+      {!loading && !gameOver ? (<RenderQuestion questionNum={number + 1} totalQues={total} question={questions[number].question} answers={questions[number].answers} userAnswer={UserAnswer ? UserAnswer[number] : undefined} callback={answerChecking} />) : null}
+      {!gameOver && !loading && UserAnswer.length === number + 1 && number !== total ? (<button onClick={Next}>Next Question</button>) : null}
     </div>
   );
 }
