@@ -3,7 +3,7 @@ import React from 'react'
 interface prop
 {
    question:string;
-   answer: string[];
+   answers: string[];
    callback: any;
    userAnswer: string;
    questionNum: number;
@@ -19,5 +19,9 @@ export const RenderQuestion:React.FC <prop>= ({
 (
     <div>
         <p>Question:{questionNum}/{totalQues}</p>
+        <p dangerouslySetInnerHTML={{__html: question}} />
+        <div>
+            {answers.map(answer)}
+        </div>
     </div>
 )
