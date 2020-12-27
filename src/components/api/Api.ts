@@ -20,8 +20,7 @@ export const FetchingData= async(amount:number , difficulty:Difficulty)=>
 
 {
     data = await(await fetch(`https://opentdb.com/api.php?amount=${amount}&category=21&difficulty=${difficulty}&type=multiple`)).json();
-    console.log(data);
-    return data.results.map((question:Question)=>({
+    return data.results.map((question:Question )=>({
         ...question,
         answers: arrayShuffle([...question.incorrect_answers,question.correct_answer])        
     })
