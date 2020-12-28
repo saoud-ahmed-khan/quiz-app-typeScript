@@ -16,10 +16,10 @@ export enum Difficulty
 var data: any
 data=[]
 export type QuestionState=Question & {answers: string[]}
-export const FetchingData= async(amount:number , difficulty:Difficulty)=>
+export const FetchingData= async(amount:number , difficulty:Difficulty, category:any )=>
 
 {
-    data = await(await fetch(`https://opentdb.com/api.php?amount=${amount}&category=21&difficulty=${difficulty}&type=multiple`)).json();
+    data = await(await fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)).json();
     return data.results.map((question:Question )=>({
         ...question,
         answers: arrayShuffle([...question.incorrect_answers,question.correct_answer])        

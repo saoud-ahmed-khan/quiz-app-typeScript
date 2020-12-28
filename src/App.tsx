@@ -3,12 +3,12 @@ import "./App.css";
 import { FetchingData, Difficulty, QuestionState } from "./components/api/Api";
 import { RenderQuestion } from "./components/RenderQuestion";
 export type objAnswer =
-{
-  question: string;
-  answer: string;
-  correct: boolean;
-  correctAnswer: string;
-}
+  {
+    question: string;
+    answer: string;
+    correct: boolean;
+    correctAnswer: string;
+  }
 function App() {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
@@ -16,15 +16,14 @@ function App() {
   const [number, setNumber] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [score, setScore] = useState(0);
-  const [catagory,SetCatagory]= useState()
-  var ComboVal:number=8;
+  const [catagory, SetCatagory] = useState<any>(9)
+  const [diff, setDiff] = useState<any>(Difficulty.EASY)
+  var ComboVal: number = 8;
   const total: number = 10;
- 
-
   const fetchData = async () => {
     setLoading(true);
     setGameOver(false)
-    const newQues = await FetchingData(total, Difficulty.EASY)
+    const newQues = await FetchingData(total, diff, catagory)
     setQuestions(newQues)
     setScore(0)
     setUserAnswer([])
@@ -34,62 +33,44 @@ function App() {
 
   const answerChecking = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) =>
-   {
-      if(!gameOver)
+  ) => {
+    if (!gameOver) {
+      const answer = event.currentTarget.value;
+      const correct = questions[number].correct_answer === answer;
+      if (correct) { setScore(prev => prev + 1) }
+      const ansobj =
       {
-        const answer=event.currentTarget.value;
-        const correct= questions[number].correct_answer === answer;
-        if(correct){setScore(prev=>prev+1)}
-        const ansobj=
-        {
-          question: questions[number].question,
-          answer,
-          correct,
-          correctAnswer:questions[number].correct_answer,
-
-
-        }
-        setUserAnswer((prev)=>[...prev, ansobj])
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer,
       }
-   };
+      setUserAnswer((prev) => [...prev, ansobj])
+    }
+  };
   const Next = () => {
-    const nextQuestion=number+1;
-    if(nextQuestion===total)
-    {
+    const nextQuestion = number + 1;
+    if (nextQuestion === total) {
       setGameOver(true)
     }
-    else
-    {
+    else {
       setNumber(nextQuestion)
     }
   }
-   console.log(number)
-   const catagories:string[]=["General Knowledge","Books","Film","Music","Musical & Theatres","Television","Video Game","Board Game","Science And Nature","Computer","Mathamatics","Mythology","Sports","Geography","History","Politics","Arts","Celebrities","Animals","Vehicals","Comics","Gadgets","Japnese Anime & Manga","Cartoon & Animations"]
+  const catagories: string[] = ["General Knowledge", "Books", "Film", "Music", "Musical & Theatres", "Television", "Video Game", "Board Game", "Science And Nature", "Computer", "Mathamatics", "Mythology", "Sports", "Geography", "History", "Politics", "Arts", "Celebrities", "Animals", "Vehicals", "Comics", "Gadgets", "Japnese Anime & Manga", "Cartoon & Animations"]
   return (
     <div className="App">
       <h1>Quiz App</h1>
-      <div>
-        <select>
-          {
-            catagories.map((cats)=>
-            {
-              return (
-                <option key={ComboVal=ComboVal+ 1}  value={ComboVal=ComboVal+ 1}>{cats}</option>
-             )
-            })
-          }
-        </select>
-        <select name="example">
-        <option>{Difficulty.EASY}</option>
-        <option>{Difficulty.MEDIUM}</option>
-        <option>{Difficulty.HARD}</option>
-
-
-        </select>
-      </div>
-
-      {gameOver || UserAnswer.length === total ? (
+      {gameOver  ?
+        <div>
+          <select onChange={(e) => { SetCatagory(e.target.value) }}>{catagories.map((cats) => { return (<option key={cats} value={ComboVal = ComboVal + 1}>{cats}</option>) })}</select>
+          <select onChange={(e) => { setDiff(e.target.value) }} >
+            <option value={Difficulty.EASY}>{Difficulty.EASY}</option>
+            <option value={Difficulty.MEDIUM}>{Difficulty.MEDIUM}</option>
+            <option value={Difficulty.HARD}>{Difficulty.HARD}</option>
+          </select>
+        </div> : null}
+      {gameOver ? (
         <button onClick={fetchData}> start </button>) : null}
       { <p>Your score is: {score}</p>}
       {loading && <p>loading questions</p>}
