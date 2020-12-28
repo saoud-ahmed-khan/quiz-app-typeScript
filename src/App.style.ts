@@ -1,7 +1,10 @@
-import styled,{ createGlobalStyle } from "styled-components";
+import styled from 'styled-components';
 import  pic  from "./components/pic/design.jpg";
 
+export const GlobalStyle=styled.createGlobalStyle`
 html
 {
-height:100%
+    he
 }
+
+`

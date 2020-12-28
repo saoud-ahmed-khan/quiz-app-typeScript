@@ -1,0 +1,176 @@
+Learn how to use React and TypeScript to create a quiz app project. You will also learn how to use Styled-Components with React.
+
+🔗 What you will make: https://tender-mcnulty-a4a646.netlify...
+💻 Code: https://github.com/weibenfalk/react-quiz
+
+🎥 Course from Thomas Weibenfalk. Check out his YouTube channel: https://www.youtube.com/user/Weibenfalk
+
+🔗 Thomas's website: https://www.weibenfalk.com/
+
+--
+
+Learn to code for free and get a developer job: https://www.freecodecamp.org
+
+Read hundreds of articles on programming: https://freecodecamp.org/news
+
+And subscribe for new videos on technology every day: https://youtube.com/subscription_cent...
+Up next
+AUTOPLAY
+
+23:33
+NOW PLAYING
+React Typescript Tutorial
+Ben Awad
+187K views
+1 year ago
+
+
+Mix
+NOW PLAYING
+Mix - freeCodeCamp.org
+YouTube
+
+19:18
+NOW PLAYING
+React and TypeScript - Getting Started
+James Q Quick
+12K views
+9 months ago
+
+
+21:04
+NOW PLAYING
+Who Asked for NRO? Complete Details | Imran Khan Exclusive Analysis
+Imran Khan
+326K views
+2 days ago
+New
+
+
+12:21
+NOW PLAYING
+Mehdi Hasan Oxford Debate with Christians [URDU] Islam is a Peaceful Religion عیسائیوں سے مناظرہ
+MessageTV
+139K views
+4 weeks ago
+
+
+46:09
+NOW PLAYING
+TypeScript Crash Course
+Traversy Media
+237K views
+3 years ago
+
+
+13:47
+NOW PLAYING
+Day in the Life of a Japanese Game Programmer
+Paolo fromTOKYO
+8.9M views
+1 year ago
+
+
+13:47
+NOW PLAYING
+TypeScript Setup With Node & Express
+Traversy Media
+106K views
+1 year ago
+
+
+48:11
+NOW PLAYING
+Learn TypeScript in 50 Minutes - Tutorial for Beginners
+Codevolution
+491K views
+2 years ago
+
+
+15:55
+NOW PLAYING
+25 Chemistry Experiments in 15 Minutes | Andrew Szydlo | TEDxNewcastle
+TEDx Talks
+2.3M views
+2 years ago
+
+
+9:37
+NOW PLAYING
+Jewish Scholar Shock the world | Orya Maqbool Jan reveals the truth | 04 December 2020 | Neo News
+Neo Tv Network - Official
+299K views
+3 weeks ago
+
+
+1:38:24
+NOW PLAYING
+React JS Crash Course
+Traversy Media
+1.4M views
+1 year ago
+
+
+12:01
+NOW PLAYING
+TypeScript - The Basics
+Fireship
+631K views
+2 years ago
+
+
+51:33
+NOW PLAYING
+TypeScript Tutorial - TypeScript for React - Learn TypeScript [2020]
+Programming with Mosh
+313K views
+3 years ago
+
+
+13:59
+NOW PLAYING
+TypeScript Interfaces vs Types
+Harry Wolff
+15K views
+7 months ago
+
+
+36:28
+NOW PLAYING
+How to use Typescript with Redux
+Cory McAboy
+30K views
+1 year ago
+
+
+17:58
+NOW PLAYING
+Introduction to TypeScript in React (Components and Props) | React.js Tutorial #3
+Bruno Antunes
+2.7K views
+2 months ago
+
+
+8:48
+NOW PLAYING
+Harf e Raaz with Orya Maqbool Jan | Part 01 | 23 December 2020 | Neo News
+Neo Tv Network - Official
+90K views
+5 days ago
+New
+
+
+3:16:40
+NOW PLAYING
+TypeScript Course for Beginners 2020 - Learn TypeScript from Scratch!
+Academind
+476K views
+11 months ago
+
+
+39:43
+NOW PLAYING
+Redux For Beginners | React Redux Tutorial
+Dev Ed
+510K views
+1 year ago
