@@ -16,7 +16,8 @@ function App() {
   const [number, setNumber] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [score, setScore] = useState(0);
-
+  const [catagory,SetCatagory]= useState()
+  var ComboVal:number=8;
   const total: number = 10;
  
 
@@ -64,10 +65,30 @@ function App() {
     }
   }
    console.log(number)
-   
+   const catagories:string[]=["General Knowledge","Books","Film","Music","Musical & Theatres","Television","Video Game","Board Game","Science And Nature","Computer","Mathamatics","Mythology","Sports","Geography","History","Politics","Arts","Celebrities","Animals","Vehicals","Comics","Gadgets","Japnese Anime & Manga","Cartoon & Animations"]
   return (
     <div className="App">
       <h1>Quiz App</h1>
+      <div>
+        <select>
+          {
+            catagories.map((cats)=>
+            {
+              return (
+                <option key={ComboVal=ComboVal+ 1}  value={ComboVal=ComboVal+ 1}>{cats}</option>
+             )
+            })
+          }
+        </select>
+        <select name="example">
+        <option>{Difficulty.EASY}</option>
+        <option>{Difficulty.MEDIUM}</option>
+        <option>{Difficulty.HARD}</option>
+
+
+        </select>
+      </div>
+
       {gameOver || UserAnswer.length === total ? (
         <button onClick={fetchData}> start </button>) : null}
       { <p>Your score is: {score}</p>}
