@@ -60,22 +60,25 @@ function App() {
   const catagories: string[] = ["General Knowledge", "Books", "Film", "Music", "Musical & Theatres", "Television", "Video Game", "Board Game", "Science And Nature", "Computer", "Mathamatics", "Mythology", "Sports", "Geography", "History", "Politics", "Arts", "Celebrities", "Animals", "Vehicals", "Comics", "Gadgets", "Japnese Anime & Manga", "Cartoon & Animations"]
   return (
     <div className="App">
-      <h1>Quiz App</h1>
-      {gameOver  ?
-        <div>
-          <select onChange={(e) => { SetCatagory(e.target.value) }}>{catagories.map((cats) => { return (<option key={cats} value={ComboVal = ComboVal + 1}>{cats}</option>) })}</select>
-          <select onChange={(e) => { setDiff(e.target.value) }} >
-            <option value={Difficulty.EASY}>{Difficulty.EASY}</option>
-            <option value={Difficulty.MEDIUM}>{Difficulty.MEDIUM}</option>
-            <option value={Difficulty.HARD}>{Difficulty.HARD}</option>
-          </select>
-        </div> : null}
-      {gameOver ? (
-        <button onClick={fetchData}> start </button>) : null}
-      { <p>Your score is: {score}</p>}
-      {loading && <p>loading questions</p>}
-      {!loading && !gameOver ? (<RenderQuestion questionNum={number + 1} totalQues={total} question={questions[number].question} answers={questions[number].answers} userAnswer={UserAnswer ? UserAnswer[number] : undefined} callback={answerChecking} />) : null}
-      {!gameOver && !loading && UserAnswer.length === number + 1 && number !== total ? (<button onClick={Next}>Next Question</button>) : null}
+      <div className="main">
+        <h1>Quiz App</h1>
+        <hr/>
+        {gameOver ?
+          <div>
+            <select onChange={(e) => { SetCatagory(e.target.value) }}>{catagories.map((cats) => { return (<option key={cats} value={ComboVal = ComboVal + 1}>{cats}</option>) })}</select>
+            <select onChange={(e) => { setDiff(e.target.value) }} >
+              <option value={Difficulty.EASY}>{Difficulty.EASY}</option>
+              <option value={Difficulty.MEDIUM}>{Difficulty.MEDIUM}</option>
+              <option value={Difficulty.HARD}>{Difficulty.HARD}</option>
+            </select>
+          </div> : null}
+        {gameOver ? (
+          <button onClick={fetchData}> start </button>) : null}
+        {<p>Your score is: {score}</p>}
+        {loading && <p>loading....</p>}
+        {!loading && !gameOver ? (<RenderQuestion questionNum={number + 1} totalQues={total} question={questions[number].question} answers={questions[number].answers} userAnswer={UserAnswer ? UserAnswer[number] : undefined} callback={answerChecking} />) : null}
+        {!gameOver && !loading && UserAnswer.length === number + 1 && number !== total ? (<button onClick={Next}>Next Question</button>) : null}
+      </div>
     </div>
   );
 }

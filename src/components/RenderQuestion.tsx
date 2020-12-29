@@ -1,5 +1,6 @@
 import React from 'react'
 import {objAnswer} from "../App";
+import "../App.css"
 
 interface prop
 {
@@ -23,7 +24,7 @@ export const RenderQuestion:React.FC <prop>= ({
         <p dangerouslySetInnerHTML={{__html: question}} />
         <div>
             {answers.map(ans=>(
-                <div key={ans}>
+                <div className="answer" key={ans}>
                     <button disabled={!!userAnswer} value={ans} onClick={callback}>
                        {ans} 
                     </button>
